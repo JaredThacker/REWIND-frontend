@@ -17,7 +17,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html data-theme="luxury" lang="en">
+    <html data-theme="REWIND" lang="en">
       <body className={`${poiretOne.className} h-screen w-screen`}>
         {children}
         </body>
