@@ -1,14 +1,14 @@
+"use client";
+
 import React from "react";
 import { Navbar } from "../Navbar/Navbar";
-
+import MainFeed from "../MainFeed/mainFeed";
 
 export const Home = () => {
-
-
-    return (
-        <div className="max-h-screen max-w-screen">
-            <Navbar/>
-        </div>
-        
-    )
-}
+  return (
+    <header>
+      <Navbar />
+      <MainFeed/>
+    </header>
+  );
+};

@@ -1,37 +1,49 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# REWIND: Stream the Past, Enjoy the Present
 
-## Getting Started
+**REWIND** is a dynamic video library application designed to offer users an exceptional experience in streaming and discovering video content. Developed collaboratively by a team of three, REWIND combines modern technologies and a robust tech stack to deliver an intuitive and feature-rich application.
 
-First, run the development server:
+## ⚡️ **Project Overview ⚡️**
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+REWIND allows users to stream videos, search for content, and enjoy a seamless media experience. The application leverages cutting-edge technologies and integrations to provide a comprehensive video library service. 
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🌟 **Key Features**
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **User Interface:** A sleek and intuitive user interface designed with React, HTML, and CSS for a modern and engaging experience.
+- **Backend Services:** Developed with Spring Boot and Java to provide a solid and scalable backend infrastructure.
+- **AWS S3 Integration:** Utilizes AWS S3 for secure and scalable storage, ensuring efficient upload and retrieval of video content.
+- **YouTube API Integration:** Incorporates the YouTube API to enable video streaming, searching, and metadata retrieval, enriching the content offerings.
+- **Endpoint Connectivity:** Ensures smooth and reliable data exchange between the frontend and backend through well-managed API connections.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## 🔧 **Technologies Used**
 
-## Learn More
+- **Frontend:** React, HTML, CSS, JavaScript
+- **Backend:** Spring Boot, Java
+- **Database:** PostgreSQL
+- **Cloud Storage:** AWS S3
+- **APIs:** YouTube API
 
-To learn more about Next.js, take a look at the following resources:
+## 🛠️ **Development Approach**
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Developed using **Agile** and **Scrum** methodologies, the project emphasized iterative development, regular feedback, and adaptive planning to achieve a high-quality application that meets user needs and project goals.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## 🎨 **Brand Development**
 
-## Deploy on Vercel
+- **Brand Identity:** Created a distinctive brand identity, including the name "REWIND" and visual elements, to reflect the app’s focus on both nostalgia and current video content.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 💻 **Frontend Development**
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
-# REWIND-frontend
+- **Design & Implementation:** Crafted a user-friendly interface using React, HTML, and CSS, ensuring a responsive and engaging user experience.
+
+## 🏗️ **Backend Development**
+
+- **Services & APIs:** Built backend services with Spring Boot and Java, including the development of RESTful APIs and management of PostgreSQL database interactions.
+
+## ☁️ **AWS Integration**
+
+- **Scalable Storage:** Configured AWS S3 for reliable and scalable media storage, facilitating seamless video content management.
+
+## 🎥 **YouTube API Integration**
+
+- **Enhanced Functionality:** Integrated the YouTube API to support video streaming, searching, and retrieving video metadata, expanding the application's content capabilities.
+
+# Discover, Watch, REWIND 
