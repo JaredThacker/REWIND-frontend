@@ -16,7 +16,7 @@ export const Navbar = () => {
   };
 
   return (
-    <nav className="fixed top-0 left-0 w-screen z-20 dark:bg-black bg-inherit">
+    <nav className="fixed top-0 left-0 w-screen z-20 dark:bg-black bg-inherit min-h-16">
       <div className="flex justify-between items-center px-2 md:px-7 h-16">
         <div className="flex items-center">
           <span className="hover:bg-background-dark/30 md:block hidden hover:text-white cursor-pointer rounded-full p-2 mr-3">
