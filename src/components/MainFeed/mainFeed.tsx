@@ -1,11 +1,12 @@
-'use client'; 
+"use client";
 
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
-import { API_KEY } from '../../data'; 
+import { API_KEY } from '../../data';
 import { VideoItem, VideoListResponse } from './YoutubeAPIFeed';
 import './mainFeed.css';
 import { truncateByWords, formatViews} from './truncateViewAndTitle'
+import Image from "next/image";
 
 const MainFeed: React.FC = () => {
   const [data, setData] = useState<VideoItem[]>([]);
@@ -18,12 +19,12 @@ const MainFeed: React.FC = () => {
       setError(null);
 
       try {
-        const videoListUrl = `https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&maxResults=50&regionCode=US&key=${API_KEY}`;
+        const videoListUrl = `https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&maxResults=20&regionCode=US&key=${API_KEY}`;
         const response = await fetch(videoListUrl);
         const result: VideoListResponse = await response.json();
         setData(result.items);
       } catch (err) {
-        setError('Failed to fetch data');
+        setError("Failed to fetch data");
       } finally {
         setLoading(false);
       }
@@ -35,7 +36,7 @@ const MainFeed: React.FC = () => {
   if (loading) return <p>Loading...</p>;
   if (error) return <p>{error}</p>;
 
-    return (
+  return (
     <div className="feed">
       {data.map((item) => (
         <Link href={`/video/${item.id}`} key={item.id}>
