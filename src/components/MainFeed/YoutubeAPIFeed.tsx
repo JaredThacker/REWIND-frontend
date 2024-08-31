@@ -12,6 +12,14 @@ export interface VideoSnippet {
 export interface VideoItem {
   id: string;
   snippet: VideoSnippet;
+  statistics: VideoStatistic;
+}
+
+export interface VideoStatistic{
+  viewCount: string;
+  likeCount: string;
+  favoriteCount: string;
+  commentCount: string;
 }
 
 export interface VideoListResponse {

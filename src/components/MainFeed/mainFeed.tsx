@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { API_KEY } from '../../data'; 
 import { VideoItem, VideoListResponse } from './YoutubeAPIFeed';
 import './mainFeed.css';
+import { truncateByWords, formatViews} from './truncateViewAndTitle'
 
 const MainFeed: React.FC = () => {
   const [data, setData] = useState<VideoItem[]>([]);
@@ -34,13 +35,14 @@ const MainFeed: React.FC = () => {
   if (loading) return <p>Loading...</p>;
   if (error) return <p>{error}</p>;
 
-  return (
+    return (
     <div className="feed">
       {data.map((item) => (
         <Link href={`/video/${item.id}`} key={item.id}>
           <div className="card">
             <img src={item.snippet.thumbnails.medium.url} alt={item.snippet.title} />
-            <h2>{item.snippet.title}</h2>
+            <h2>{truncateByWords(item.snippet.title, 8)}</h2>
+            <h4>{formatViews(parseInt(item.statistics.viewCount, 10))} views</h4>
             <h3>{item.snippet.channelTitle}</h3>
           </div>
         </Link>
