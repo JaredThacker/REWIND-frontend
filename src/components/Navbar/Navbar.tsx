@@ -3,6 +3,7 @@
 import { Bell, Menu, Search, Video } from "lucide-react";
 import Link from "next/link";
 import { FormEvent, useRef } from "react";
+import { ThemeToggle } from "../ThemeToggle";
 
 export const Navbar = () => {
   const searchInputRef = useRef<HTMLInputElement>(null);
@@ -44,7 +45,9 @@ export const Navbar = () => {
           </form>
         </div>
         <div className="flex items-center space-x-7">
-          <div className="md:hidden">{/* theme toggler */}</div>
+          <div className="md:hidden">
+            <ThemeToggle />
+          </div>
           <Video />
           <Bell />
         </div>
