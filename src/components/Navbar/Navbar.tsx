@@ -13,6 +13,7 @@ import {
 } from "../ui/dropdown-menu";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 import { DropdownMenuLabel } from "@radix-ui/react-dropdown-menu";
+import { ThemeToggle } from "../ThemeToggle";
 
 export const Navbar = () => {
   const [dialogOpen, setDialogOpen] = React.useState(false);
@@ -55,7 +56,9 @@ export const Navbar = () => {
           </form>
         </div>
         <div className="flex items-center space-x-7">
-          <div className="md:hidden">{/* theme toggler */}</div>
+          <div className="md:hidden">
+            <ThemeToggle />
+          </div>
           <Video />
           <Bell />
           <div className="md:hidden">
