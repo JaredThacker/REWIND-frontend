@@ -2,10 +2,11 @@ import React, { useEffect } from "react";
 
 //router
 import { useRouter } from 'next/router';
+import { API_KEY } from '../../data';
 import { get } from "http";
 
-//YouTube API:  AIzaSyBgjmgRuxcs0hMPE-YAwo328dxRO0LHESU
-const API_KEY:  'AIzaSyBgjmgRuxcs0hMPE-YAwo328dxRO0LHESU';
+//YouTube API
+const API_KEY:  '${API_KEY}';
 
 const VideoDisplay = () => {
     const router = useRouter();
