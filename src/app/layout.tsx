@@ -20,18 +20,16 @@ export default function RootLayout({
 }>) {
   return (
     <html data-theme="REWIND" lang="en">
-      <body className={`${poiretOne.className} h-screen w-screen`}>
+      <body className={`${quickSand.className} h-screen w-screen`}>
         <ThemeProvider
-            attribute="class"
-            defaultTheme="dark"
-            enableSystem
-            disableTransitionOnChange
-          >
-           <main className = 'pt-0'>{children}</main>
-          </ThemeProvider>
+          attribute="class"
+          defaultTheme="dark"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <main className="pt-0">{children}</main>
+        </ThemeProvider>
       </body>
     </html>
   );
 }
-
- 

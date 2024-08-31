@@ -4,15 +4,15 @@ import React from "react";
 import { Bell, Menu, Search, Video } from "lucide-react";
 import Link from "next/link";
 import { FormEvent, useRef } from "react";
-import { Dialog, DialogContent, DialogTrigger } from "../ui/dialog";
+import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "../ui/dropdown-menu";
-import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
-import { DropdownMenuLabel } from "@radix-ui/react-dropdown-menu";
+  DropdownMenuLabel,
+} from "@/components/ui/dropdown-menu";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { ThemeToggle } from "../ThemeToggle";
 
 export const Navbar = () => {
@@ -89,18 +89,22 @@ export const Navbar = () => {
             <DropdownMenu>
               <DropdownMenuTrigger className="focus outline-none">
                 <Avatar>
-                  <AvatarImage src="" alt="">
-                    <AvatarFallback>PFP</AvatarFallback>
-                  </AvatarImage>
+                  <AvatarImage
+                    src="public/genericpfp.jpg"
+                    alt="Profile Picture"
+                  />
+                  <AvatarFallback>PFP</AvatarFallback>
                 </Avatar>
               </DropdownMenuTrigger>
               <DropdownMenuContent className="w-72">
                 <DropdownMenuLabel>
                   <div className="flex space-x-4">
                     <Avatar>
-                      <AvatarImage src="" alt="">
-                        <AvatarFallback>PFP</AvatarFallback>
-                      </AvatarImage>
+                      <AvatarImage
+                        src="public/genericpfp.jpg"
+                        alt="Profile Picture"
+                      />
+                      <AvatarFallback>PFP</AvatarFallback>
                     </Avatar>
                     <div className="flex flex-col space-y-3 text-base">
                       <span>
