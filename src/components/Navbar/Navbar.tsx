@@ -116,7 +116,7 @@ export const Navbar = () => {
                 <DropdownMenuSeparator />
                 <div className="p-2 flex items-center">
                   <span className="mr-2">Appearance:</span>
-                  {/* <ThemeToggle/> */}
+                  <ThemeToggle />
                 </div>
               </DropdownMenuContent>
             </DropdownMenu>
