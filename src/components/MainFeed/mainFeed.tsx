@@ -17,7 +17,7 @@ const MainFeed: React.FC = () => {
       setError(null);
 
       try {
-        const videoListUrl = `https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&maxResults=1&regionCode=US&key=${API_KEY}`;
+        const videoListUrl = `https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&maxResults=20&regionCode=US&key=${API_KEY}`;
         const response = await fetch(videoListUrl);
 
         // TODO: Properly outline response FULLY to typescript type
