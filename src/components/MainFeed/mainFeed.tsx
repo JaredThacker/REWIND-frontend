@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { API_KEY } from '../../data'; 
 import { VideoItem, VideoListResponse } from './YoutubeAPIFeed';
+import './mainFeed.css';
 
 const MainFeed: React.FC = () => {
   const [data, setData] = useState<VideoItem[]>([]);

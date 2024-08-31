@@ -2,7 +2,8 @@
     display: flex;
     flex-wrap: wrap;
     gap: 16px;
-    padding: 16px;
+    padding-top: 90px;
+    justify-content: center;
   }
   
   .card {
