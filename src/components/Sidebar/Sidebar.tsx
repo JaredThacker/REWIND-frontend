@@ -19,7 +19,7 @@ const Sidebar = ({ className }: Props) => {
   return (
     <ScrollArea
       className={cn(
-        "h-screen w-60 pt-3 z-40 !fixed hidden md:block top-0 dark:bg-black dark:text-white bg-white text-black -translate-x-full transition-transform duration-500",
+        "h-screen w-60 pt-3 !fixed hidden md:block top-0 dark:bg-black dark:text-white bg-white text-black -translate-x-full transition-transform duration-500",
         className
       )}
     >
@@ -36,8 +36,8 @@ const Sidebar = ({ className }: Props) => {
           <div className="space-y-1">
             <Link href="/">
               <Button
-                variant="default"
-                className="w-full font-light justify-start dark:bg-background-dark dark:text-white bg-background-light hover:bg-background-light/50 text-black"
+                variant="ghost"
+                className="w-full font-light justify-start"
               >
                 <Home size={30} className="mr-3" />
                 Home
