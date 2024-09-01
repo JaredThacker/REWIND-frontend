@@ -41,16 +41,16 @@ export async function fetchVideos(query: string, maxResult: number) {
         description: videoDescription,
         thumbnail: videoThumbnail,
         viewCount,
-        publishedDate,
         channel: {
           channelId,
           channelTitle,
           channelImage,
         },
+        publishedDate,
       });
-
-      return videos;
     }
+
+    return videos;
   } catch (error: any) {
     console.log("Error fetching videos", error.response.data);
     throw error;

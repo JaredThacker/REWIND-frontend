@@ -11,7 +11,9 @@ export const Home = () => {
     data: videoResults,
     error,
     isLoading,
-  } = useSWR(`fetchVideo/${badge}`, () => fetchVideos("badge", 9));
+  } = useSWR(`fetchVideo/${badge}`, () => fetchVideos(badge, 9));
+
+  console.log(videoResults);
 
   return (
     <>
