@@ -1,14 +1,16 @@
 "use client";
 
-import React from "react";
-import { Navbar } from "../Navbar/Navbar";
-import MainFeed from "../MainFeed/mainFeed";
+import React, { useState } from "react";
+import useSWR from "swr";
+import { fetchVideos } from "@/lib/api";
 
 export const Home = () => {
-  return (
-    <>
-      <Navbar />
-      <MainFeed />
-    </>
-  );
+  const [badge, setBadge] = useState("all");
+  const {
+    data: videoResults,
+    error,
+    isLoading,
+  } = useSWR(`fetchVideo/${badge}`, () => fetchVideos("badge", 9));
+
+  return <></>;
 };
