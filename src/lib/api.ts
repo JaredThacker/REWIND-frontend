@@ -7,7 +7,7 @@ const API_KEY = process.env.NEXT_PUBLIC_API_KEY;
 export async function fetchVideos(query: string, maxResult: number) {
   try {
     const { data } = await axios.get(
-      `${BASE_URL}/search?key=${API_KEY}&q=${query}&order=data&maxResults=${maxResult}&type=video&part=snippet`
+      `${BASE_URL}/search?key=${API_KEY}&q=${query}&order=date&maxResults=${maxResult}&type=video&part=snippet`
     );
 
     console.log(data);
@@ -51,8 +51,8 @@ export async function fetchVideos(query: string, maxResult: number) {
 
       return videos;
     }
-  } catch (error) {
-    console.log("Error fetching videos");
+  } catch (error: any) {
+    console.log("Error fetching videos", error.response.data);
     throw error;
   }
 }
