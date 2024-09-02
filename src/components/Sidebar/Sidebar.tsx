@@ -36,8 +36,8 @@ const Sidebar = ({ className }: Props) => {
           <div className="space-y-1">
             <Link href="/">
               <Button
-                variant="default"
-                className="w-full font-light justify-start dark:bg-background-dark dark:text-white bg-background-light hover:bg-background-light/50 text-black"
+                variant="ghost"
+                className="w-full font-light justify-start"
               >
                 <Home size={30} className="mr-3" />
                 Home
