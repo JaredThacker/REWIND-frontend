@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useRef, FormEvent } from "react";
-import { Bell, Menu, Search, Video } from "lucide-react";
+import { Menu, Search } from "lucide-react";
 import Link from "next/link";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import {
@@ -64,8 +64,6 @@ export const Navbar = () => {
           <div className="md:hidden">
             <ThemeToggle />
           </div>
-          <Video />
-          <Bell />
           <div className="md:hidden">
             <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
               <DialogTrigger>
