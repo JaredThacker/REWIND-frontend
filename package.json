@@ -27,7 +27,8 @@
     "react-router-dom": "^6.26.1",
     "swr": "^2.2.5",
     "tailwind-merge": "^2.5.2",
-    "tailwindcss-animate": "^1.0.7"
+    "tailwindcss-animate": "^1.0.7",
+    "uuidv4": "^6.2.13"
   },
   "devDependencies": {
     "@types/node": "^20",
