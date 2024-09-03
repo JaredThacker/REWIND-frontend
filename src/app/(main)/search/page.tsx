@@ -1,7 +1,3 @@
-import React from "react";
+import { Search } from "@/components/Search/Search";
 
-const search = () => {
-  return <div>Search Results: </div>;
-};
-
-export default search;
+export default Search;
