@@ -14,16 +14,23 @@ import {
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { ThemeToggle } from "../Theme/ThemeToggle";
 import UserSignIn from "../userAuth/signIn";
+import { redirect, useRouter } from "next/navigation";
 
 export const Navbar = () => {
   const [dialogOpen, setDialogOpen] = useState(false);
   const [currentUser, setCurrentUser] = useState<string | null>(null);
   const searchInputRef = useRef<HTMLInputElement>(null);
 
+  const router = useRouter();
+
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+
     if (searchInputRef.current) {
-      console.log(searchInputRef.current.value);
+      const searchQuery = searchInputRef.current.value;
+
+      setDialogOpen(false);
+      router.push(`/search?q=${searchQuery}`);
     }
   };
 
@@ -35,9 +42,7 @@ export const Navbar = () => {
     <nav className="fixed top-0 left-0 w-screen z-20 dark:bg-black bg-inherit min-h-16">
       <div className="flex justify-between items-center px-2 md:px-7 h-16">
         <div className="flex items-center">
-          <span className="hover:bg-background-dark/30 md:block hidden hover:text-white cursor-pointer rounded-full p-2 mr-3">
-            <Menu size={30} />
-          </span>
+          <span className="hover:bg-background-dark/30 md:block hidden hover:text-white cursor-pointer rounded-full p-2 mr-3"></span>
           <Link href="/" className="flex items-center space-x-2">
             <span className="hidden md:block text-2xl font-bold">REWIND</span>
           </Link>
