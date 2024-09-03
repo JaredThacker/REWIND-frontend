@@ -34,8 +34,13 @@ export const Navbar = () => {
     }
   };
 
-  const handleSignIn = (username: string) => {
+  const handleSignIn = (username: string | null) => {
     setCurrentUser(username);
+  };
+
+  const handleLogout = () => {
+    localStorage.removeItem("username");
+    setCurrentUser(null);
   };
 
   return (
@@ -118,7 +123,8 @@ export const Navbar = () => {
                         </span>
                         <Link href={`/channels`} className="text-blue-500">
                           View your channel
-                        </Link>
+                          </Link>
+                          <button onClick={handleLogout} className="text-red-500">Logout</button>
                       </div>
                     </div>
                   </DropdownMenuLabel>
