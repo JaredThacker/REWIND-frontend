@@ -3,11 +3,7 @@
 import React, { useState, useRef, FormEvent } from "react";
 import { Bell, Menu, Search, Video } from "lucide-react";
 import Link from "next/link";
-import {
-  Dialog,
-  DialogContent,
-  DialogTrigger,
-} from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -16,7 +12,7 @@ import {
   DropdownMenuLabel,
 } from "@/components/ui/dropdown-menu";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { ThemeToggle } from "../ThemeToggle";
+import { ThemeToggle } from "../Theme/ThemeToggle";
 import UserSignIn from "../userAuth/signIn";
 
 export const Navbar = () => {
@@ -98,10 +94,7 @@ export const Navbar = () => {
               <DropdownMenu>
                 <DropdownMenuTrigger className="focus:outline-none">
                   <Avatar>
-                    <AvatarImage
-                      src="/genericpfp.jpg"
-                      alt="Profile Picture"
-                    />
+                    <AvatarImage src="/genericpfp.jpg" alt="Profile Picture" />
                     <AvatarFallback>PFP</AvatarFallback>
                   </Avatar>
                 </DropdownMenuTrigger>
