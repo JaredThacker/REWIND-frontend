@@ -6,7 +6,6 @@ import { API_KEY } from "../../data";
 import { VideoItem, VideoListResponse } from "./YoutubeAPIFeed";
 import "./mainFeed.css";
 import { truncateByWords, formatViews } from "./truncateViewAndTitle";
-import Image from "next/image";
 
 const MainFeed: React.FC = () => {
   const [data, setData] = useState<VideoItem[]>([]);
