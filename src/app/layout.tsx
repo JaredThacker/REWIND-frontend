@@ -17,9 +17,9 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
     <html data-theme="REWIND" lang="en">
       <body className={`${quickSand.className} h-screen w-screen`}>
@@ -35,7 +35,6 @@ export default function RootLayout({
             {/* <FooterMenu /> */}
           </ContextProvider>
         </ThemeProvider>
-        <Navbar />
       </body>
     </html>
   );

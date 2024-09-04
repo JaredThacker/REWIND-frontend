@@ -1,7 +1,7 @@
 "use client";
 
-import React, { useState, useRef, FormEvent } from "react";
-import { Bell, Menu, Search, Video } from "lucide-react";
+import React, { useState, useRef, FormEvent, useContext } from "react";
+import { Menu, Search } from "lucide-react";
 import Link from "next/link";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import {
@@ -14,21 +14,36 @@ import {
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { ThemeToggle } from "../Theme/ThemeToggle";
 import UserSignIn from "../userAuth/signIn";
+import { redirect, useRouter } from "next/navigation";
+import AppContext from "@/context/appContext";
 
 export const Navbar = () => {
   const [dialogOpen, setDialogOpen] = useState(false);
   const [currentUser, setCurrentUser] = useState<string | null>(null);
   const searchInputRef = useRef<HTMLInputElement>(null);
 
+  const { setShowNav } = useContext(AppContext);
+
+  const router = useRouter();
+
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+
     if (searchInputRef.current) {
-      console.log(searchInputRef.current.value);
+      const searchQuery = searchInputRef.current.value;
+
+      setDialogOpen(false);
+      router.push(`/search?q=${searchQuery}`);
     }
   };
 
-  const handleSignIn = (username: string) => {
+  const handleSignIn = (username: string | null) => {
     setCurrentUser(username);
+  };
+
+  const handleLogout = () => {
+    localStorage.removeItem("username");
+    setCurrentUser(null);
   };
 
   return (
@@ -36,7 +51,7 @@ export const Navbar = () => {
       <div className="flex justify-between items-center px-2 md:px-7 h-16">
         <div className="flex items-center">
           <span className="hover:bg-background-dark/30 md:block hidden hover:text-white cursor-pointer rounded-full p-2 mr-3">
-            <Menu size={30} />
+          <Menu onClick={() => setShowNav(prevState => !prevState)}/>
           </span>
           <Link href="/" className="flex items-center space-x-2">
             <span className="hidden md:block text-2xl font-bold">REWIND</span>
@@ -64,8 +79,6 @@ export const Navbar = () => {
           <div className="md:hidden">
             <ThemeToggle />
           </div>
-          <Video />
-          <Bell />
           <div className="md:hidden">
             <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
               <DialogTrigger>
@@ -115,7 +128,8 @@ export const Navbar = () => {
                         </span>
                         <Link href={`/channels`} className="text-blue-500">
                           View your channel
-                        </Link>
+                          </Link>
+                          <button onClick={handleLogout} className="text-red-500">Logout</button>
                       </div>
                     </div>
                   </DropdownMenuLabel>
