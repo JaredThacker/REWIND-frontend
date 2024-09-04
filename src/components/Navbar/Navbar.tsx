@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useRef, FormEvent } from "react";
+import React, { useState, useRef, FormEvent, useContext } from "react";
 import { Menu, Search } from "lucide-react";
 import Link from "next/link";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
@@ -15,11 +15,14 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { ThemeToggle } from "../Theme/ThemeToggle";
 import UserSignIn from "../userAuth/signIn";
 import { redirect, useRouter } from "next/navigation";
+import AppContext from "@/context/appContext";
 
 export const Navbar = () => {
   const [dialogOpen, setDialogOpen] = useState(false);
   const [currentUser, setCurrentUser] = useState<string | null>(null);
   const searchInputRef = useRef<HTMLInputElement>(null);
+
+  const { setShowNav } = useContext(AppContext);
 
   const router = useRouter();
 
@@ -47,7 +50,9 @@ export const Navbar = () => {
     <nav className="fixed top-0 left-0 w-screen z-20 dark:bg-black bg-inherit min-h-16">
       <div className="flex justify-between items-center px-2 md:px-7 h-16">
         <div className="flex items-center">
-          <span className="hover:bg-background-dark/30 md:block hidden hover:text-white cursor-pointer rounded-full p-2 mr-3"></span>
+          <span className="hover:bg-background-dark/30 md:block hidden hover:text-white cursor-pointer rounded-full p-2 mr-3">
+          <Menu onClick={() => setShowNav(prevState => !prevState)}/>
+          </span>
           <Link href="/" className="flex items-center space-x-2">
             <span className="hidden md:block text-2xl font-bold">REWIND</span>
           </Link>
