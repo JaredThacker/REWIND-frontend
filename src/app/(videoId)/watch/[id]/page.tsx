@@ -3,7 +3,7 @@
 import React from 'react';
 import { useParams } from 'next/navigation';
 import useSWR from 'swr';
-import ReactPlayer from 'react-player/youtube'
+import Player from 'react-player/youtube'
 import { useState } from 'react';
 
 import { fetchVideoDetails, fetchVideos } from '@/lib/api';
@@ -43,7 +43,7 @@ const VideoDetails = () => {
   return (
     <div className='mb-9'>
       <div className='px-4 h-[80vh] mt-14'>
-        <ReactPlayer url={videoDetails?.videoUrl} width='100%' height='100%' />
+        <Player url={videoDetails?.videoUrl} width='100%' height='100%' />
       </div>
 
       <div className='p-2 md:p-4 grid grid-cols-12 gap-7'>
