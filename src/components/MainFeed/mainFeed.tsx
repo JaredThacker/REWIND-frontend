@@ -38,7 +38,7 @@ const MainFeed: React.FC = () => {
   return (
     <div className="feed">
       {data.map((item) => (
-        <Link href={`/video/${item.id}`} key={item.id}>
+        <Link href={`/watch/${item.id}`} key={item.id}>
           <div className="card">
             <img
               src={item.snippet.thumbnails.medium.url}
