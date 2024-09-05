@@ -91,6 +91,7 @@ const VideoDetails = () => {
                     ? () => setSubstringCount(undefined)
                     : () => setSubstringCount(200)
                 }
+
                 className="font-medium cursor-pointer text-sm underline text-blue-400"
               >
                 {substringCount === 200 ? "load more" : "load less"}
