@@ -6,6 +6,7 @@ import { API_KEY } from "../../data";
 import { VideoItem, VideoListResponse } from "./YoutubeAPIFeed";
 import "./mainFeed.css";
 import { truncateByWords, formatViews } from "./truncateViewAndTitle";
+import "animate.css";
 
 const MainFeed: React.FC = () => {
   const [data, setData] = useState<VideoItem[]>([]);
@@ -18,7 +19,7 @@ const MainFeed: React.FC = () => {
       setError(null);
 
       try {
-        const videoListUrl = `https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&maxResults=50&regionCode=US&key=${API_KEY}`;
+        const videoListUrl = `https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&maxResults=10&regionCode=US&key=${API_KEY}`;
         const response = await fetch(videoListUrl);
         const result: VideoListResponse = await response.json();
         setData(result.items);
@@ -36,7 +37,7 @@ const MainFeed: React.FC = () => {
   if (error) return <p>{error}</p>;
 
   return (
-    <div className="feed">
+    <div className="feed animate-fadeIn animate-duration-[3000ms]">
       {data.map((item) => (
         <Link href={`/watch/${item.id}`} key={item.id}>
           <div className="card glass">
