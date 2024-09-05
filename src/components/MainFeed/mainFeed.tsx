@@ -39,7 +39,7 @@ const MainFeed: React.FC = () => {
     <div className="feed">
       {data.map((item) => (
         <Link href={`/watch/${item.id}`} key={item.id}>
-          <div className="card">
+          <div className="card glass">
             <img
               src={item.snippet.thumbnails.medium.url}
               alt={item.snippet.title}
