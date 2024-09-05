@@ -11,11 +11,11 @@ const Sidebar = ({ className }: Props) => {
   return (
     <ScrollArea
       className={cn(
-        "h-screen w-60 pt-3 z-40 !fixed hidden md:block top-0 dark:bg-black dark:text-white bg-white text-black -translate-x-full transition-transform duration-500",
+        "h-screen w-60 pt-3 z-40 !fixed hidden md:block top-0 dark:bg-black dark:text-white bg-white text-black -translate-x-full transition-transform duration-500 animate-fadeInLeft",
         className
       )}
     >
-      <div className="px-5 flex items-center">
+      <div className="px-5 flex items-center animate-fadeInLeft">
         <Link href="/" className="flex items-center space-x-2">
           <span className="text-2xl font-black">REWIND</span>
         </Link>
