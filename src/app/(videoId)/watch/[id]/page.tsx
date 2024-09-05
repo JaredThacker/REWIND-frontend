@@ -44,6 +44,7 @@ const VideoDetails = () => {
     <div className='mb-9'>
       <div className='px-4 h-[80vh] mt-14'>
         <Player url={videoDetails?.videoUrl} width='100%' height='100%' />
+
       </div>
 
       <div className='p-2 md:p-4 grid grid-cols-12 gap-7'>
@@ -60,23 +61,23 @@ const VideoDetails = () => {
                   <AvatarFallback>VD</AvatarFallback>
                 </Avatar>
                 <div>
-                  <h4 className='text-gray-400 text-sm'>
+                  <h4 className='text-background-dark text-sm'>
                     {videoDetails?.channelName}
                   </h4>
-                  <p className='text-gray-400 text-sm'>
+                  <p className='text-background-dark text-sm'>
                     {formatCount(+videoDetails!.subscribersCount)} subscribers
                   </p>
                 </div>
               </div>
-              <div className='flex space-x-4 text-sm items-center bg-gray-600 text-white px-2 md:px-5 rounded-3xl'>
-                <button className='flex items-center space-x-2 hover:text-blue-500'>
+              <div className='flex space-x-4 text-sm items-center bg-background-light text-white px-2 md:px-5 rounded-3xl'>
+                <button className='flex items-center space-x-2 hover:text-background-dark'>
                   <ThumbsUp className='w-4' />
                   <span className='text-[9px]'>
                     {formatCount(videoDetails?.likes)}
                   </span>
                 </button>
                 <span>|</span>
-                <button className='flex items-center hover:text-red-500'>
+                <button className='flex items-center hover:text-neutral-900'>
                   <ThumbsDown className='w-4' />
                 </button>
               </div>
@@ -91,7 +92,7 @@ const VideoDetails = () => {
                     ? () => setSubstringCount(undefined)
                     : () => setSubstringCount(200)
                 }
-                className='font-medium cursor-pointer text-sm underline text-blue-400'
+                className='font-medium cursor-pointer text-sm underline text-sky-50'
               >
                 {substringCount === 200 ? 'load more' : 'load less'}
               </span>
