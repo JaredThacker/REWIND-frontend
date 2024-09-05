@@ -1,12 +1,11 @@
 "use client";
 
-import React, { useEffect, useState } from 'react';
-import Link from 'next/link';
-import { API_KEY } from '../../data';
-import { VideoItem, VideoListResponse } from './YoutubeAPIFeed';
-import './mainFeed.css';
-import { truncateByWords, formatViews} from './truncateViewAndTitle'
-import Image from "next/image";
+import React, { useEffect, useState } from "react";
+import Link from "next/link";
+import { API_KEY } from "../../data";
+import { VideoItem, VideoListResponse } from "./YoutubeAPIFeed";
+import "./mainFeed.css";
+import { truncateByWords, formatViews } from "./truncateViewAndTitle";
 
 const MainFeed: React.FC = () => {
   const [data, setData] = useState<VideoItem[]>([]);
@@ -19,7 +18,7 @@ const MainFeed: React.FC = () => {
       setError(null);
 
       try {
-        const videoListUrl = `https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&maxResults=20&regionCode=US&key=${API_KEY}`;
+        const videoListUrl = `https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&maxResults=50&regionCode=US&key=${API_KEY}`;
         const response = await fetch(videoListUrl);
         const result: VideoListResponse = await response.json();
         setData(result.items);
@@ -39,11 +38,16 @@ const MainFeed: React.FC = () => {
   return (
     <div className="feed">
       {data.map((item) => (
-        <Link href={`/video/${item.id}`} key={item.id}>
-          <div className="card">
-            <img src={item.snippet.thumbnails.medium.url} alt={item.snippet.title} />
+        <Link href={`/watch/${item.id}`} key={item.id}>
+          <div className="card glass">
+            <img
+              src={item.snippet.thumbnails.medium.url}
+              alt={item.snippet.title}
+            />
             <h2>{truncateByWords(item.snippet.title, 8)}</h2>
-            <h4>{formatViews(parseInt(item.statistics.viewCount, 10))} views</h4>
+            <h4>
+              {formatViews(parseInt(item.statistics.viewCount, 10))} views
+            </h4>
             <h3>{item.snippet.channelTitle}</h3>
           </div>
         </Link>

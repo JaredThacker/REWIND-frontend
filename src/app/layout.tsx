@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import { Inter, Poiret_One, Limelight, Quicksand } from "next/font/google";
 import "./globals.css";
-import { ThemeProvider } from "@/components/theme-provider";
+import { ThemeProvider } from "@/components/Theme/theme-provider";
 import { Navbar } from "@/components/Navbar/Navbar";
+import ContextProvider from "@/components/ui/ContextProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 const poiretOne = Poiret_One({ subsets: ["latin"], weight: ["400"] });
@@ -16,9 +17,9 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
     <html data-theme="REWIND" lang="en">
       <body className={`${quickSand.className} h-screen w-screen`}>
@@ -28,9 +29,12 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <main className="pt-0">{children}</main>
+          <ContextProvider>
+            <main className="pt-0">{children}</main>
+            <Navbar />
+            {/* <FooterMenu /> */}
+          </ContextProvider>
         </ThemeProvider>
-        <Navbar />
       </body>
     </html>
   );

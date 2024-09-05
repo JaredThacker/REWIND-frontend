@@ -1,14 +1,6 @@
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { cn } from "@/lib/utils";
-import {
-  Clock4,
-  Compass,
-  History,
-  Home,
-  MonitorPlay,
-  Tv2,
-  UserCircle,
-} from "lucide-react";
+import { Clock4, History, Home, MonitorPlay, UserCircle } from "lucide-react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Separator } from "../ui/separator";
@@ -43,14 +35,14 @@ const Sidebar = ({ className }: Props) => {
                 Home
               </Button>
             </Link>
-            <Button variant="ghost" className="w-full justify-start font-light">
+            {/* <Button variant="ghost" className="w-full justify-start font-light">
               <Compass size={30} className="mr-3" />
               Explore
-            </Button>
-            <Button variant="ghost" className="w-full justify-start font-light">
+            </Button> */}
+            {/* <Button variant="ghost" className="w-full justify-start font-light">
               <Tv2 size={30} className="mr-3" />
               Subscriptions
-            </Button>
+            </Button> */}
           </div>
         </div>
         <Separator />
