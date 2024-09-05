@@ -1,6 +1,7 @@
 import type { Config } from "tailwindcss";
+import { withAnimations } from "animated-tailwindcss";
 
-const config: Config = {
+const config: Config = withAnimations({
   darkMode: ["class"],
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
@@ -116,5 +117,5 @@ const config: Config = {
       },
     ],
   },
-};
+}) as any as Config;
 export default config;

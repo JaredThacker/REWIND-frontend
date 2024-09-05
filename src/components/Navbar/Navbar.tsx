@@ -47,14 +47,16 @@ export const Navbar = () => {
   };
 
   return (
-    <nav className="fixed top-0 left-0 w-screen z-20 dark:bg-black bg-inherit min-h-16">
+    <nav className="fixed top-0 left-0 w-screen z-20 dark:bg-black bg-inherit min-h-16 animate-fadeInDown">
       <div className="flex justify-between items-center px-2 md:px-7 h-16">
         <div className="flex items-center">
           <span className="hover:bg-background-dark/30 md:block hidden hover:text-white cursor-pointer rounded-full p-2 mr-3">
-          <Menu onClick={() => setShowNav(prevState => !prevState)}/>
+            <Menu onClick={() => setShowNav((prevState) => !prevState)} />
           </span>
           <Link href="/" className="flex items-center space-x-2">
-            <span className="hidden md:block text-2xl font-bold">REWIND</span>
+            <span className="hidden md:block text-2xl font-bold animate-fadeInLeft">
+              REWIND
+            </span>
           </Link>
         </div>
 
@@ -128,8 +130,10 @@ export const Navbar = () => {
                         </span>
                         <Link href={`/channels`} className="text-blue-500">
                           View your channel
-                          </Link>
-                          <button onClick={handleLogout} className="text-red-500">Logout</button>
+                        </Link>
+                        <button onClick={handleLogout} className="text-red-500">
+                          Logout
+                        </button>
                       </div>
                     </div>
                   </DropdownMenuLabel>
