@@ -32,7 +32,7 @@ export const Search = () => {
   }
 
   return (
-    <div className="mt-[-64px] px-3 animate-fadeIn animate-duration-[3000ms]">
+    <div className="mt-[-64px] px-3 pt-10 animate-fadeIn animate-duration-[3000ms]">
       <h3 className="scroll-m-20 my-5 text-2xl font-semibold tracking-tight">
         Search Results
       </h3>
