@@ -1,9 +1,9 @@
-'use client';
+"use client"
 
 import React from 'react';
 import { useParams } from 'next/navigation';
 import useSWR from 'swr';
-import Player from 'react-player/youtube'
+import Player from 'react-player/youtube';
 import { useState } from 'react';
 
 import { fetchVideoDetails, fetchVideos } from '@/lib/api';
@@ -12,6 +12,7 @@ import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { formatCount } from '@/lib/utils';
 import { ThumbsDown, ThumbsUp } from 'lucide-react';
 import RelatedVideos from '@/components/RelatedVideos';
+import UserCommentsDisplay from '@/components/Comments/userCommentsDisplay';
 
 const VideoDetails = () => {
   const { id } = useParams();
@@ -97,6 +98,7 @@ const VideoDetails = () => {
               </span>
             </p>
           </div>
+          <UserCommentsDisplay /> 
         </div>
 
         <aside className='md:col-span-4 col-span-12'>

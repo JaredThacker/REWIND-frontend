@@ -1,0 +1,42 @@
+/* userCommentsDisplay.module.css */
+
+.commentSection {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.comment {
+  display: flex;
+  border-bottom: 1px solid #e0e0e0;
+  padding: 10px 0;
+  gap: 10px;
+}
+
+.commentAvatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  overflow: hidden;
+  background-color: #f1f1f1;
+}
+
+.commentAvatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.commentContent {
+  flex: 1;
+}
+
+.commentUser {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.commentText {
+  font-size: 14px;
+  color: #333;
+}
