@@ -3,6 +3,7 @@ import useFetchComments from "./fetchUserComments";
 import { UserComments } from './types';
 import "./userCommentsDisplay.css"
 import { ThumbsDown, ThumbsUp } from "lucide-react";
+import PostCommentBox from "./userPostComment";
 
 const userCommentsDisplay: React.FC = () => {
     const { comments, loading, error } = useFetchComments();
@@ -12,6 +13,7 @@ const userCommentsDisplay: React.FC = () => {
 
     return (
         <div className="comments-section">
+            <PostCommentBox/>
             {comments.length === 0 && <div className="no-comments">No comments yet</div>}
             {comments.map((comment) => (
                 <div key={comment.id} className="comment">
