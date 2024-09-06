@@ -5,8 +5,8 @@ import { uploadFile } from "react-s3";
 
 const S3_BUCKET = "rewinduploads";
 const REGION = "us-east-1";
-const ACCESS_KEY = process.env.NEXT_PUBLIC_AWS_ACCESS_KEY;
-const SECRET_ACCESS_KEY = process.env.NEXT_PUBLIC_AWS_SECRET_KEY;
+const ACCESS_KEY = `${process.env.NEXT_PUBLIC_AWS_ACCESS_KEY}`;
+const SECRET_ACCESS_KEY = `${process.env.NEXT_PUBLIC_AWS_SECRET_KEY}`;
 
 const config = {
   bucketName: S3_BUCKET,
