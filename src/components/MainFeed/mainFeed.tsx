@@ -40,7 +40,7 @@ const MainFeed: React.FC = () => {
     <div className="feed animate-fadeIn animate-duration-[3000ms]">
       {data.map((item) => (
         <Link href={`/watch/${item.id}`} key={item.id}>
-          <div className="card glass">
+          <div className="card grow bg-background-light h-[269px] w-[200px] shadow hover:outline">
             <img
               src={item.snippet.thumbnails.medium.url}
               alt={item.snippet.title}
