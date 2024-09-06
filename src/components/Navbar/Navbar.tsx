@@ -81,7 +81,12 @@ export const Navbar = () => {
           <div className="md:hidden">
             <ThemeToggle />
           </div>
-          <Video />
+          <button
+            className="btn btn-ghost btn-circle"
+            onClick={() => router.push("/upload")}
+          >
+            <Video />
+          </button>
           <Bell />
           <div className="md:hidden">
             <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
