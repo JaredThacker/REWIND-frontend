@@ -2,6 +2,7 @@ import React from "react";
 import useFetchComments from "./fetchUserComments";
 import { UserComments } from './types';
 import "./userCommentsDisplay.css"
+import { ThumbsDown, ThumbsUp } from "lucide-react";
 
 const userCommentsDisplay: React.FC = () => {
     const { comments, loading, error } = useFetchComments();
@@ -26,10 +27,10 @@ const userCommentsDisplay: React.FC = () => {
                         </div>
                         <div className="comment-actions">
                             <button className="comment-action">
-                                <img src="/thumb_up.svg" alt="thumb up" className="thumb-icon"/> 
+                               <ThumbsUp className="w-6" /> 
                                 ({comment.likes})</button>
                             <button className="comment-action">
-                                 <img src="/thumb_down.svg" alt="thumb down" className="thumb-icon"/> 
+                                 <ThumbsDown className="w-6"/> 
                                 ({comment.dislikes})</button>
                             <button className="comment-action">Reply</button>
                         </div>
