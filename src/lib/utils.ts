@@ -37,7 +37,7 @@ export function formatPublishedDate(publishedDate: string): string {
     const monthsAgo = Math.floor(secondsAgo / 2592000);
     return `${monthsAgo} month${monthsAgo === 1 ? "" : "s"} ago`;
   } else {
-    const yearsAgo = Math.floor(secondsAgo / 315360000);
+    const yearsAgo = Math.floor(secondsAgo / 31536000);
     return `${yearsAgo} year${yearsAgo === 1 ? "" : "s"} ago`;
   }
 }
