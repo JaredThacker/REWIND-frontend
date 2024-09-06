@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useRef, FormEvent, useContext } from "react";
-import { Menu, Search } from "lucide-react";
+import { Bell, Menu, Search, Video } from "lucide-react";
 import Link from "next/link";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import {
@@ -51,13 +51,18 @@ export const Navbar = () => {
       <div className="flex justify-between items-center px-2 md:px-7 h-16">
         <div className="flex items-center">
           <span className="hover:bg-background-dark/30 md:block hidden hover:text-white cursor-pointer rounded-full p-2 mr-3">
-            <Menu onClick={() => setShowNav((prevState) => !prevState)} />
+            <Menu
+              className="animate-fadeIn animate-duration-[3000ms]"
+              onClick={() => setShowNav((prevState) => !prevState)}
+            />
           </span>
-          <Link href="/" className="flex items-center space-x-2">
-            <span className="hidden md:block text-2xl font-bold animate-fadeInLeft">
-              REWIND
-            </span>
-          </Link>
+          <button className="btn btn-ghost">
+            <Link href="/" className="flex items-center space-x-2">
+              <span className="hidden md:block text-2xl font-bold animate-fadeInLeft">
+                REWIND
+              </span>
+            </Link>
+          </button>
         </div>
 
         <div className="md:flex items-center justify-center hidden">
@@ -81,6 +86,15 @@ export const Navbar = () => {
           <div className="md:hidden">
             <ThemeToggle />
           </div>
+          <button
+            className="btn btn-ghost btn-circle"
+            onClick={() => router.push("/upload")}
+          >
+            <Video />
+          </button>
+          <button className="btn btn-ghost btn-circle">
+            <Bell />
+          </button>
           <div className="md:hidden">
             <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
               <DialogTrigger>
