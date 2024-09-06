@@ -10,6 +10,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { formatCount } from "@/lib/utils";
 import { ThumbsDown, ThumbsUp } from "lucide-react";
 import RelatedVideos from "@/components/RelatedVideos";
+import { useRouter } from "next/navigation";
 import UserCommentsDisplay from '@/components/Comments/userCommentsDisplay';
 import PostCommentBox from "@/components/Comments/userPostComment";
 import { UserComments } from "@/components/Comments/types"; 
@@ -21,6 +22,8 @@ const VideoDetails = () => {
   const [error, setError] = useState<string | null>(null);
 
   const [substringCount, setSubstringCount] = useState<undefined | number>(200);
+
+  const router = useRouter();
 
   const {
     data: videoDetails,
