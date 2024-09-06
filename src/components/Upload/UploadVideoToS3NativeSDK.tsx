@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import AWS from "aws-sdk";
+import { LinearProgress } from "@mui/material";
 
 const S3_BUCKET = "rewinduploads";
 const REGION = "us-east-1";
@@ -44,11 +45,20 @@ const UploadVideoToS3WithNativeSdk = () => {
 
   return (
     <div className="flex flex-col gap-9">
-      <input type="file" onChange={handleFileInput} />
+      <input className="outline" type="file" onChange={handleFileInput} />
       <div>
-        <progress className="" value={progress} max={100}>
+        {/* <progress
+          className="flex grow justify-center"
+          value={progress}
+          max={100}
+        >
           {progress}
-        </progress>
+        </progress> */}
+        <LinearProgress
+          variant="determinate"
+          value={progress}
+          color="secondary"
+        />
       </div>
       <button
         className="btn btn-ghost"
