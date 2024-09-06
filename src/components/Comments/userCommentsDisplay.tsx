@@ -1,6 +1,7 @@
 import React from "react";
 import useFetchComments from "./fetchUserComments";
 import { UserComments } from './types';
+import "./userCommentsDisplay.css"
 
 const userCommentsDisplay: React.FC = () => {
     const { comments, loading, error } = useFetchComments();
@@ -19,14 +20,17 @@ const userCommentsDisplay: React.FC = () => {
                     <div className="comment-content">
                         <div className="comment-header">
                             <span className="comment-author">{comment.authorUserName}</span>
-                            <span className="comment-time">2 hours ago</span> {/* Add real timestamp */}
                         </div>
                         <div className="comment-body">
                             {comment.commentBody}
                         </div>
                         <div className="comment-actions">
-                            <button className="comment-action">Like ({comment.likes})</button>
-                            <button className="comment-action">Dislike ({comment.dislikes})</button>
+                            <button className="comment-action">
+                                <img src="/thumb_up.svg" alt="thumb up" className="thumb-icon"/> 
+                                ({comment.likes})</button>
+                            <button className="comment-action">
+                                 <img src="/thumb_down.svg" alt="thumb down" className="thumb-icon"/> 
+                                ({comment.dislikes})</button>
                             <button className="comment-action">Reply</button>
                         </div>
                     </div>
