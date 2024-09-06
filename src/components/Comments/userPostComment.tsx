@@ -2,21 +2,26 @@ import React, { useState, useEffect } from 'react';
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
+import { UserComments } from './types';
 
-const PostCommentBox: React.FC = () => {
+interface PostCommentBoxProps {
+    onCommentPosted: (newComment: UserComments) => void;
+}
+
+const PostCommentBox: React.FC<PostCommentBoxProps> = ({ onCommentPosted }) => {
     const [commentBody, setCommentBody] = useState("");
     const [authorUserName, setAuthorUserName] = useState("");
 
     useEffect(() => {
-        const storedUsername = localStorage.getItem("username"); // Get username from localStorage
+        const storedUsername = localStorage.getItem("username");
         if (storedUsername) {
             setAuthorUserName(storedUsername);
         }
-    }, []); 
+    }, []);
 
     const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
-        event.preventDefault(); 
-        
+        event.preventDefault();
+
         try {
             const response = await fetch("http://localhost:8080/api/comments", {
                 method: "POST",
@@ -24,8 +29,10 @@ const PostCommentBox: React.FC = () => {
                     "Content-Type": "application/json",
                 },
                 body: JSON.stringify({
-                    commentBody,
-                    authorUserName,
+                    commentBody: commentBody,
+                    authorUserName: localStorage.getItem("username"),
+                    likes: 0,
+                    dislikes: 0,
                 }),
             });
 
@@ -33,8 +40,8 @@ const PostCommentBox: React.FC = () => {
                 throw new Error('Network response for posting comment was not ok :(');
             }
 
-            const data = await response.json();
-            console.log("Comment post was successful", data);
+            const newComment: UserComments = await response.json();
+            onCommentPosted(newComment); // new comment coming through!
             setCommentBody("");
         } catch (error) {
             console.log("There was a problem with the fetch operation for posting comments :(", error);
@@ -61,17 +68,23 @@ const PostCommentBox: React.FC = () => {
                     sx={{
                         "& .MuiOutlinedInput-root": {
                             "& fieldset": {
-                                borderColor: "white", // outline colour
+                                borderColor: "white",
                             },
                             "&:hover fieldset": {
-                                borderColor: "white", // colour on hover
+                                borderColor: "white",
+                            },
+                            "&.Mui-focused fieldset": {
+                                borderColor: "white",
                             },
                         },
                         "& .MuiInputBase-input": {
-                            color: "white", // colour of text
+                            color: "white",
                         },
                         "& .MuiFormLabel-root": {
-                            color: "white", // colour of label
+                            color: "white",
+                        },
+                        "& .MuiInputLabel-root.Mui-focused": {
+                            color: "white",
                         },
                     }}
                 />

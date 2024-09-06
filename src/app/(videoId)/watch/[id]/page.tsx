@@ -1,11 +1,9 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import { useParams } from "next/navigation";
 import useSWR from "swr";
 import Player from "react-player/youtube";
-import { useState } from "react";
-
 import { fetchVideoDetails, fetchVideos } from "@/lib/api";
 import Loading from "../../loading";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
@@ -13,9 +11,14 @@ import { formatCount } from "@/lib/utils";
 import { ThumbsDown, ThumbsUp } from "lucide-react";
 import RelatedVideos from "@/components/RelatedVideos";
 import UserCommentsDisplay from '@/components/Comments/userCommentsDisplay';
+import PostCommentBox from "@/components/Comments/userPostComment";
+import { UserComments } from "@/components/Comments/types"; 
 
 const VideoDetails = () => {
   const { id } = useParams();
+  const [commentBody, setCommentBody] = useState<UserComments[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
+  const [error, setError] = useState<string | null>(null);
 
   const [substringCount, setSubstringCount] = useState<undefined | number>(200);
 
@@ -34,6 +37,29 @@ const VideoDetails = () => {
   } = useSWR("/relatedVideos", () => fetchVideos("all", 5), {
     revalidateOnFocus: false,
   });
+
+  React.useEffect(() => {
+    const fetchComments = async () => {
+      try {
+        const response = await fetch(`http://localhost:8080/api/comments`);
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        const data: UserComments[] = await response.json();
+        setCommentBody(data);
+      } catch (error) {
+        setError('Failed to fetch comments');
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchComments();
+  }, [id]);
+
+  const addComment = (newComment: UserComments) => {
+    setCommentBody(prevComments => [...prevComments, newComment]);
+  };
 
   if (errorVideoDetails || errorRelatedVideos) {
     throw new Error("Error fetching video data");
@@ -92,14 +118,14 @@ const VideoDetails = () => {
                     ? () => setSubstringCount(undefined)
                     : () => setSubstringCount(200)
                 }
-
                 className="font-medium cursor-pointer text-sm underline text-blue-400"
               >
                 {substringCount === 200 ? "load more" : "load less"}
               </span>
             </p>
           </div>
-          <UserCommentsDisplay />
+          <PostCommentBox onCommentPosted={addComment} />
+          <UserCommentsDisplay comments={commentBody} loading={loading} error={error} />
         </div>
 
         <aside className="md:col-span-4 col-span-12">

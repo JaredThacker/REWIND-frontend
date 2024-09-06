@@ -1,8 +1,8 @@
 
 export interface UserComments{
     
-    comment: string;
-    username: string;
+    commentBody: string;
+    authorUserName: string;
     likes: number;
     dislikes: number;
     videoId: string;

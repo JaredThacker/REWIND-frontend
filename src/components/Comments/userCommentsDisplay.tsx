@@ -1,22 +1,24 @@
 import React from "react";
-import useFetchComments from "./fetchUserComments";
 import { UserComments } from './types';
-import "./userCommentsDisplay.css"
+import "./userCommentsDisplay.css";
 import { ThumbsDown, ThumbsUp } from "lucide-react";
-import PostCommentBox from "./userPostComment";
 
-const userCommentsDisplay: React.FC = () => {
-    const { comments, loading, error } = useFetchComments();
+interface UserCommentsDisplayProps {
+    comments: UserComments[];
+    loading: boolean;
+    error: string | null;
+}
 
+const UserCommentsDisplay: React.FC<UserCommentsDisplayProps> = ({ comments, loading, error }) => {
     if (loading) return <div>Loading...</div>;
     if (error) return <div>{error}</div>;
+     console.log(comments)
 
     return (
         <div className="comments-section">
-            <PostCommentBox/>
             {comments.length === 0 && <div className="no-comments">No comments yet</div>}
-            {comments.map((comment) => (
-                <div key={comment.id} className="comment">
+            {comments.map((comment, index) => (
+                <div key={index} className="comment">
                     <div className="comment-avatar">
                         <img src="/genericpfp.jpg" alt={comment.authorUserName} />
                     </div>
@@ -43,4 +45,4 @@ const userCommentsDisplay: React.FC = () => {
     );
 };
 
-export default userCommentsDisplay;
+export default UserCommentsDisplay;
