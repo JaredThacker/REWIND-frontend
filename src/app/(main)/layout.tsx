@@ -7,7 +7,7 @@ export default function MainLayout({
 }) {
   return (
     <>
-      <main className="md:pl-60 pt-36">
+      <main className="md:pl-60 pt-20">
         <div>{children}</div>
       </main>
       <Sidebar className="translate-x-0" />

@@ -6,6 +6,7 @@ import { API_KEY } from "../../data";
 import { VideoItem, VideoListResponse } from "./YoutubeAPIFeed";
 import "./mainFeed.css";
 import { truncateByWords, formatViews } from "./truncateViewAndTitle";
+import "animate.css";
 
 const MainFeed: React.FC = () => {
   const [data, setData] = useState<VideoItem[]>([]);
@@ -36,10 +37,10 @@ const MainFeed: React.FC = () => {
   if (error) return <p>{error}</p>;
 
   return (
-    <div className="feed">
+    <div className="feed animate-fadeIn animate-duration-[3000ms]">
       {data.map((item) => (
         <Link href={`/watch/${item.id}`} key={item.id}>
-          <div className="card">
+          <div className="card glass">
             <img
               src={item.snippet.thumbnails.medium.url}
               alt={item.snippet.title}
