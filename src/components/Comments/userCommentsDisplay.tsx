@@ -14,10 +14,12 @@ const UserCommentsDisplay: React.FC<UserCommentsDisplayProps> = ({ comments, loa
     if (error) return <div>{error}</div>;
      console.log(comments)
 
+     const sortedComments = [...comments].sort((a, b) => b.id - a.id);
+
     return (
         <div className="comments-section">
-            {comments.length === 0 && <div className="no-comments">No comments yet</div>}
-            {comments.map((comment, index) => (
+            {sortedComments.length === 0 && <div className="no-comments">No comments yet</div>}
+            {sortedComments.map((comment, index) => (
                 <div key={index} className="comment">
                     <div className="comment-avatar">
                         <img src="/genericpfp.jpg" alt={comment.authorUserName} />
