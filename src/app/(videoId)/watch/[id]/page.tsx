@@ -12,11 +12,14 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { formatCount } from "@/lib/utils";
 import { ThumbsDown, ThumbsUp } from "lucide-react";
 import RelatedVideos from "@/components/RelatedVideos";
+import { useRouter } from "next/navigation";
 
 const VideoDetails = () => {
   const { id } = useParams();
 
   const [substringCount, setSubstringCount] = useState<undefined | number>(200);
+
+  const router = useRouter();
 
   const {
     data: videoDetails,
@@ -91,7 +94,6 @@ const VideoDetails = () => {
                     ? () => setSubstringCount(undefined)
                     : () => setSubstringCount(200)
                 }
-
                 className="font-medium cursor-pointer text-sm underline text-blue-400"
               >
                 {substringCount === 200 ? "load more" : "load less"}
