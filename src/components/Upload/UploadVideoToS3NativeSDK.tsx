@@ -2,6 +2,8 @@
 
 import React, { useState } from "react";
 import AWS from "aws-sdk";
+import { Button } from 'react-bootstrap';
+import CreateUploadModal from "./CreateUploadModal";
 
 const S3_BUCKET = "rewinduploads";
 const REGION = "us-east-1";
@@ -19,6 +21,7 @@ const myBucket = new AWS.S3({
 const UploadVideoToS3WithNativeSdk = () => {
   const [progress, setProgress] = useState(0);
   const [selectedFile, setSelectedFile] = useState(null);
+    const [showModal, setShowModal] = useState(false);
 
   const handleFileInput = (e) => {
     setSelectedFile(e.target.files[0]);
@@ -42,6 +45,18 @@ const UploadVideoToS3WithNativeSdk = () => {
       });
   };
 
+
+  const handleShowModal = () => setShowModal(true);
+  const handleHideModal = () => setShowModal(false);
+
+   const handleModalSubmit = () => {
+    if (selectedFile) {
+      uploadFile(selectedFile);
+    }
+    handleHideModal();
+  };
+
+
   return (
     <div className="flex flex-col gap-9">
       <input type="file" onChange={handleFileInput} />
@@ -50,14 +65,17 @@ const UploadVideoToS3WithNativeSdk = () => {
           {progress}
         </progress>
       </div>
-      <button
-        className="btn btn-ghost"
-        onClick={() => uploadFile(selectedFile)}
-      >
-        {" "}
-        Upload
-      </button>
+        <Button variant="primary" onClick={handleShowModal}>
+        Video Information
+      </Button>
+
+        <CreateUploadModal 
+          show={showModal} 
+          onHide={handleHideModal} 
+          onSubmit={handleModalSubmit} 
+          />
     </div>
+
   );
 };
 
