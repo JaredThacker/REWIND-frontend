@@ -1,8 +1,10 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import AWS from "aws-sdk";
-import { Button, Modal, Form } from "react-bootstrap";
+import { LinearProgress, TextField } from "@mui/material";
+import { redirect } from "next/dist/server/api-utils";
+import { useRouter } from "next/navigation";
 
 const S3_BUCKET = "rewinduploads";
 const REGION = "us-east-1";
@@ -19,34 +21,13 @@ const myBucket = new AWS.S3({
 
 const UploadVideoToS3WithNativeSdk = () => {
   const [progress, setProgress] = useState(0);
-  const [selectedFile, setSelectedFile] = useState<File | null>(null);
-  const [title, setTitle] = useState("");
-  const [description, setDescription] = useState("");
-  const [username, setUsername] = useState<string | null>(null);
-  const [thumbnail, setThumbnail] = useState<File | null>(null);
-  const [imagePreview, setImagePreview] = useState<string | null>(null);
-  const [showModal, setShowModal] = useState(false);
+  const [selectedFile, setSelectedFile] = useState(null);
 
-  useEffect(() => {
-    const storedUsername = localStorage.getItem("username");
-    if (storedUsername) {
-      setUsername(storedUsername);
-    }
-  }, []);
-
-  const handleFileInput = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setSelectedFile(e.target.files ? e.target.files[0] : null);
+  const handleFileInput = (e) => {
+    setSelectedFile(e.target.files[0]);
   };
 
-  const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files ? e.target.files[0] : null;
-    if (file) {
-      setThumbnail(file);
-      setImagePreview(URL.createObjectURL(file));
-    }
-  };
-
-  const uploadFile = (file: File) => {
+  const uploadFile = (file) => {
     const params = {
       ACL: "public-read",
       Body: file,
@@ -64,97 +45,51 @@ const UploadVideoToS3WithNativeSdk = () => {
       });
   };
 
-  const handleSubmit = () => {
-    if (selectedFile && thumbnail) {
-      const formData = new FormData();
-      formData.append("title", title);
-      formData.append("description", description);
-      formData.append("username", username || "");
-      formData.append("thumbnail", thumbnail);
+  const router = useRouter();
 
-      uploadFile(selectedFile);
-      setShowModal(false);
-    } else {
-      alert("Please select a video file and a thumbnail image.");
-    }
-  };
+  if (({ progress } as any as number) === 100) {
+    router.push("upload/watch");
+  }
 
   return (
     <div className="flex flex-col gap-9">
-      <Button variant="primary" onClick={() => setShowModal(true)}>
-        Upload Video
-      </Button>
-
-      <Modal show={showModal} onHide={() => setShowModal(false)}>
-        <Modal.Header closeButton>
-          <Modal.Title>Upload Video</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          <Form>
-            <Form.Group>
-              <Form.Label>Title: </Form.Label>
-              <Form.Control
-                type="text"
-                placeholder="Enter video title"
-                value={title}
-                onChange={(e) => setTitle(e.target.value)}
-              />
-            </Form.Group>
-
-            <Form.Group>
-              <Form.Label>Description: </Form.Label>
-              <Form.Control
-                type="text"
-                placeholder="Enter video description"
-                value={description}
-                onChange={(e) => setDescription(e.target.value)}
-              />
-            </Form.Group>
-
-            <Form.Group>
-              <Form.Label>Upload Image: </Form.Label>
-              <Form.Control
-                type="file"
-                accept="image/*"
-                onChange={handleImageChange}
-              />
-              {imagePreview && (
-                <div className="mt-3">
-                  <img
-                    src={imagePreview}
-                    alt="Image preview"
-                    style={{ maxWidth: "100%" }}
-                  />
-                </div>
-              )}
-            </Form.Group>
-
-            <Form.Group>
-              <Form.Label>Select Video File: </Form.Label>
-              <Form.Control
-                type="file"
-                accept="video/*"
-                onChange={handleFileInput}
-              />
-              {progress > 0 && (
-                <div>
-                  <progress value={progress} max={100}>
-                    {progress}%
-                  </progress>
-                </div>
-              )}
-            </Form.Group>
-          </Form>
-        </Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={() => setShowModal(false)}>
-            Close
-          </Button>
-          <Button variant="primary" onClick={handleSubmit}>
-            Upload
-          </Button>
-        </Modal.Footer>
-      </Modal>
+      <form className="flex flex-col gap-4">
+        {/* <TextField variant="filled" label="Title" color="secondary" />
+        <TextField
+          variant="filled"
+          label="Description"
+          color="secondary"
+          multiline
+        /> */}
+      </form>
+      <input className="" type="file" onChange={handleFileInput} />
+      <div>
+        {/* <progress
+          className="flex grow justify-center"
+          value={progress}
+          max={100}
+        >
+          {progress}
+        </progress> */}
+        <LinearProgress
+          variant="determinate"
+          value={progress}
+          color="secondary"
+        />
+      </div>
+      <button
+        className="btn btn-ghost"
+        onClick={() => uploadFile(selectedFile)}
+      >
+        {" "}
+        Upload
+      </button>
+      <button
+        className="btn btn-ghost"
+        onClick={() => router.push("/upload/w")}
+      >
+        Watch Video
+      </button>
     </div>
   );
 };
