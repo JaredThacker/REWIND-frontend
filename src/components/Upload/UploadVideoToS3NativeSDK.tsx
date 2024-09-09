@@ -2,6 +2,9 @@
 
 import React, { useState } from "react";
 import AWS from "aws-sdk";
+import { LinearProgress, TextField } from "@mui/material";
+import { redirect } from "next/dist/server/api-utils";
+import { useRouter } from "next/navigation";
 
 const S3_BUCKET = "rewinduploads";
 const REGION = "us-east-1";
@@ -42,13 +45,37 @@ const UploadVideoToS3WithNativeSdk = () => {
       });
   };
 
+  const router = useRouter();
+
+  if (({ progress } as any as number) === 100) {
+    router.push("upload/watch");
+  }
+
   return (
     <div className="flex flex-col gap-9">
-      <input type="file" onChange={handleFileInput} />
+      <form className="flex flex-col gap-4">
+        {/* <TextField variant="filled" label="Title" color="secondary" />
+        <TextField
+          variant="filled"
+          label="Description"
+          color="secondary"
+          multiline
+        /> */}
+      </form>
+      <input className="" type="file" onChange={handleFileInput} />
       <div>
-        <progress className="" value={progress} max={100}>
+        {/* <progress
+          className="flex grow justify-center"
+          value={progress}
+          max={100}
+        >
           {progress}
-        </progress>
+        </progress> */}
+        <LinearProgress
+          variant="determinate"
+          value={progress}
+          color="secondary"
+        />
       </div>
       <button
         className="btn btn-ghost"
@@ -56,6 +83,12 @@ const UploadVideoToS3WithNativeSdk = () => {
       >
         {" "}
         Upload
+      </button>
+      <button
+        className="btn btn-ghost"
+        onClick={() => router.push("/upload/w")}
+      >
+        Watch Video
       </button>
     </div>
   );
