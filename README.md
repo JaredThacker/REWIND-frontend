@@ -10,10 +10,6 @@ Please see the [REWIND-backend](https://github.com/JWDiehl/REWIND-backend) repos
 
 ![rewind reload](https://github.com/user-attachments/assets/9ab9b038-e5cb-424e-b779-df7faa59b5e8)
 
-![login logout](https://github.com/user-attachments/assets/4cadabc9-e4c5-4fa2-8803-1a0df8dbfd3a)
-
-![light dark mode](https://github.com/user-attachments/assets/e54dc151-e9d6-40d5-9010-86891b17d51c)
-
 ## ⚡️ **Project Overview ⚡️**
 
 REWIND allows users to stream videos, search for content, and enjoy a seamless media experience. The application leverages cutting-edge technologies and integrations to provide a comprehensive video library service. 
