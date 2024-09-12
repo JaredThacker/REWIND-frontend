@@ -6,6 +6,8 @@ Contributions:
 
 [Jonathan Diehl](https://github.com/JWDiehl) ⚡️ [Jared Thacker](https://github.com/JaredThacker) ⚡️ [Diptika Devi](https://github.com/DiptikaD)
 
+Please see the [REWIND-backend](https://github.com/JWDiehl/REWIND-backend) repository for the backend code.
+
 ## ⚡️ **Project Overview ⚡️**
 
 REWIND allows users to stream videos, search for content, and enjoy a seamless media experience. The application leverages cutting-edge technologies and integrations to provide a comprehensive video library service. 
