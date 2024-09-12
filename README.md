@@ -4,9 +4,7 @@
 
 Contributions: 
 
-[Diptika Devi](https://github.com/DiptikaD)
-[Jared Thacker](https://github.com/JaredThacker)
-[Jonathan Diehl](https://github.com/JWDiehl)
+[Jonathan Diehl](https://github.com/JWDiehl) ⚡️ [Jared Thacker](https://github.com/JaredThacker) ⚡️ [Diptika Devi](https://github.com/DiptikaD)
 
 ## ⚡️ **Project Overview ⚡️**
 
