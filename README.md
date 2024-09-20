@@ -6,7 +6,7 @@ Contributions:
 
 [Jonathan Diehl](https://github.com/JWDiehl) ⚡️ [Jared Thacker](https://github.com/JaredThacker) ⚡️ [Diptika Devi](https://github.com/DiptikaD)
 
-Please see the [REWIND-backend](https://github.com/JWDiehl/REWIND-backend) repository for the backend code.
+Please see the [REWIND-backend](https://github.com/JaredThacker/REWIND-backend) repository for the backend code.
 
 ![rewind reload](https://github.com/user-attachments/assets/9ab9b038-e5cb-424e-b779-df7faa59b5e8)
 
