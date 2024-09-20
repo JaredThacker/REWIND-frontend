@@ -88,10 +88,10 @@ const Sidebar = ({ className }: Props) => {
             Subscriptions
           </h2>
           <div className="space-y-1">
-            <Button variant="ghost" className="w-full justify-start font-light">
+            {/* <Button variant="ghost" className="w-full justify-start font-light">
               <UserCircle size={30} className="mr-3" />
               Profile Handle
-            </Button>
+            </Button> */}
           </div>
         </div>
       </div>
